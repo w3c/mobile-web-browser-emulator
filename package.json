@@ -1,26 +1,16 @@
 {
-    "name": "mobile-checker",
+    "name": "mobile-web-browser-emulator",
     "version": "0.0.1",
     "license": "MIT",
     "dependencies": {
-        "express": "4.4.1",
-        "socket.io": "1.0.4",
-        "morgan": "1.1.1",
         "headless": "0.2.1",
         "selenium-webdriver": "2.42.1",
         "chromedriver": "2.10",
         "browsermob-proxy":"1.0.6",
         "media-type": "0.1.0",
-        "ejs": "1.0.0",
-        "node-uuid": "1.4.1",
         "metaviewport-parser": "0.0.1",
         "easyimage": "1.0.2",
-        "intl": "0.1.4",
-        "effective-domain-name-parser": "0.0.1",
-	    "css": "2.1.0",
-        "ip": "0.3.1",
-        "q": "1.0.1",
-        "safe-url-input-checker":"0.0.2"
+        "intl": "0.1.4"
     },
     "devDependencies": {
         "mocha": "1.20.1",
@@ -29,7 +19,6 @@
         "jsdom": ""
     },
     "scripts": {
-       "start": "node app.js",
-       "test": "mocha --timeout 20000 --globals Intl,IntlPolyfill"
+       "start": "node app.js"
     }
 }
