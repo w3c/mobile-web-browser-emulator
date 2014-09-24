@@ -1,6 +1,6 @@
 var MobileBrowser = require('../lib/index.js').MobileBrowser;
 var mobileBrowser = new MobileBrowser();
-mobileBrowser.emulate(
+mobileBrowser.emulate({
 	url: 'http://google.com',
 	width: 300,
 	height: 700
