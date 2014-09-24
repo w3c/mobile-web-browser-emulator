@@ -7,6 +7,9 @@ This module is implemented in the new version of W3C's mobileOK Checker (renamed
 
 This application work in [headless](https://github.com/kesla/node-headless) mode (powered via XVFB). So use it on server side would be so easy.
 
+![alt google screenshot](https://github.com/guibbs/mobile-web-browser-emulator/blob/master/examples/screenshots/google.png)
+![alt w3c screenshot](https://github.com/guibbs/mobile-web-browser-emulator/blob/master/examples/screenshots/w3.png)
+
 # Install
 
 This API need [BrowserMob Proxy](http://bmp.lightbody.net/) running. Maybe it will disappear in the futur.
