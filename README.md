@@ -9,6 +9,7 @@ This application work in [headless](https://github.com/kesla/node-headless) mode
 
 # Install
 
+This API need [BrowserMob Proxy](http://bmp.lightbody.net/) running. Maybe it will disappear in the futur.
 It will be available on npm soon. For the moment, clone the repository in your node_modules directory.
 
 # API
