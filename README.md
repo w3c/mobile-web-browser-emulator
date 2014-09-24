@@ -3,13 +3,13 @@
 Mobile Web Browser Emulator is a node.js tool which simulate a browser on a mobile device based on chrome. This module also allow manipulation via selenium webdriver.
 
 It could be an easy way to test your mobile web application on a mobile device.
-This module is implemented in the version of W3C's mobileOK Checker (renamed as mobile checker, it is in current development).
+This module is implemented in the new version of W3C's mobileOK Checker (renamed as mobile checker, it is in current development).
 
 This application work in [headless](https://github.com/kesla/node-headless) mode (powered via XVFB). So use it on server side would be so easy.
 
 # Install
 
-It will be available on npm soon. For the moment, clone the repository on node_modules directory.
+It will be available on npm soon. For the moment, clone the repository in your node_modules directory.
 
 # API
 
@@ -38,6 +38,7 @@ function(browser) {
 ````
 
 browser methods :
+
 	browser.do(function(driver) { //take a function in parameter
 		// get a driver object which can be use with selenium webdriver 
 	}); 
