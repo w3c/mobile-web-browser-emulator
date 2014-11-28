@@ -13,6 +13,7 @@
         "intl": "0.1.4"
     },
     "devDependencies": {
+        "express": "4.4.1",
         "mocha": "1.20.1",
         "expect.js": "0.3.1",
         "compression": "1.0.11",
