@@ -2,6 +2,13 @@
     "name": "mobile-web-browser-emulator",
     "version": "0.0.1",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/w3c/mobile-web-browser-emulator.git"
+    },
+    "bugs": {
+        "url": "https://github.com/w3c/mobile-web-browser-emulator/issues"
+    },
     "dependencies": {
         "headless": "0.2.1",
         "selenium-webdriver": "2.42.1",
