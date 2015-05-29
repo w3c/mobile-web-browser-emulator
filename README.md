@@ -1,3 +1,6 @@
+[![Dependency Status](https://david-dm.org/w3c/mobile-web-browser-emulator.svg)](https://david-dm.org/w3c/mobile-web-browser-emulator)
+[![devDependency Status](https://david-dm.org/w3c/mobile-web-browser-emulator/dev-status.svg)](https://david-dm.org/w3c/mobile-web-browser-emulator#info=devDependencies)
+
 # Mobile Web Browser Emulator
 
 Mobile Web Browser Emulator is a node.js tool which simulate a browser on a mobile device based on chrome. This module also allow manipulation via selenium webdriver.
