@@ -23,7 +23,7 @@ It will be available on npm soon. For the moment, clone the repository in your n
 
 With Mobile Web Browser Emulator, it will easy like a piece of cake to test your mobile web applications in [using selenium web driver API](http://selenium.googlecode.com/git/docs/api/javascript/index.html).
 
-emulation example (see code comments for some explainations) : 
+emulation example (see code comments for some explainations) :
 ````javascript
 
 //dependencie
@@ -32,7 +32,7 @@ var MobileBrowser = require('mobile-web-browser-emulator').MobileBrowser;
 //create a new mobile browser
 var mobileBrowser = new MobileBrowser();
 
-//emulate browser with parameters you want. You can set tablet, smartphone or 
+//emulate browser with parameters you want. You can set tablet, smartphone or
 //desktop dimensions.
 mobileBrowser.emulate(
 	url: 'http://google.com', //url to load. required
@@ -48,8 +48,8 @@ function(browser) {
 browser methods :
 
 	browser.do(function(driver) { //take a function in parameter
-		// get a driver object which can be use with selenium webdriver 
-	}); 
+		// get a driver object which can be use with selenium webdriver
+	});
 	browser.takeScreenshot('example.png') //take path of your screenshot in parameters.
 
 manipulation with selenium example :
@@ -70,7 +70,7 @@ function(browser) {
 });
 ````
 
-screenshot example : 
+screenshot example :
 ````javascript
 var MobileBrowser = require('../lib/index.js').MobileBrowser;
 var mobileBrowser = new MobileBrowser();
