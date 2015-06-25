@@ -65,21 +65,23 @@ describe("Getting data from browser", function() {
 
     });
 
-    it('should return the title of the page "Alert", even with an alert',
+    it('should return the title of the page "Alert1", even with an alert',
         function(done) {
             browser.open("file://" + __dirname +
                 "/browser-tests/alert.html");
+            browser.on('alert', function(text) {
+                expect(text).to.be('test');
+            });
             browser.do(function(driver) {
                 return driver.findElement(webdriver.By.tagName('title'))
                     .then(function(title) {
                         title.getInnerHtml().then(function(
                             titleText) {
                             expect(titleText).to.be('Alert');
-                            done();
                         });
                     });
             });
-            browser.close();
+            browser.close().then(done);
         });
 
     it(
@@ -87,6 +89,10 @@ describe("Getting data from browser", function() {
         function(done) {
             browser.open("file://" + __dirname +
                 "/browser-tests/alert2.html");
+            browser.on('alert', function(text) {
+                expect(text).to.be('test');
+                browser.close().then(done);
+            });
             setTimeout(function() {
                 browser.do(function(driver) {
                     return driver.findElement(webdriver.By.tagName(
@@ -95,13 +101,10 @@ describe("Getting data from browser", function() {
                             titleText) {
                             expect(titleText).to.be(
                                 'Alert2');
-                            done();
                         });
                     });
                 });
-                browser.close();
             }, 2500);
-
         });
 
 
@@ -152,6 +155,7 @@ describe("Getting data from browser and network", function() {
             expect(har.log.entries[0].response.status).to.be(200);
             done();
         });
+
         browser.open("http://localhost:3001/ok.html");
         browser.do(function(d) {
             return d.findElement(webdriver.By.tagName('title')).then(
