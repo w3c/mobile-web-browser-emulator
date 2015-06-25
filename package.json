@@ -27,6 +27,7 @@
         "mocha": "^2.2.5"
     },
     "scripts": {
-       "start": "node app.js"
+       "start": "node app.js",
+       "test": "mocha --timeout 10000 --globals ErrorHandler"
     }
 }
