@@ -18,7 +18,8 @@
         "media-type": "0.1.0",
         "metaviewport-parser": "^0.0.1",
         "selenium-webdriver": "^2.46.1",
-        "node-uuid": "1.4.3"
+        "node-uuid": "1.4.3",
+        "rimraf": "^2.4.0"
     },
     "devDependencies": {
         "expect.js": "^0.3.1",
