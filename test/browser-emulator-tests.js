@@ -164,7 +164,7 @@ describe("Getting data from browser", function() {
                         });
                     });
                 });
-            }, 2500);
+            }, 3500);
         });
 
 
