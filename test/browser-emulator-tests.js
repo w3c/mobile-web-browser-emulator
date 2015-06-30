@@ -20,11 +20,7 @@ describe("Starting and quiting browser", function() {
             done();
         });
         browser.open("file://" + __dirname + "/browser-tests/ok.html");
-        browser.do(function() {
-            done();
-            return webdriver.promise.fulfilled();
-        });
-        browser.close();
+        browser.close().then(done);
     });
 
     it('should emit an error with incorrect proxy', function(done) {
@@ -46,67 +42,6 @@ describe("Starting and quiting browser", function() {
 
 });
 
-describe("Getting data from browser", function() {
-    var browser = new Browser();
-
-    it('should return the title of the page "OK"', function(done) {
-        browser.open("file://" + __dirname + "/browser-tests/ok.html");
-        browser.do(function(driver) {
-            return driver.findElement(webdriver.By.tagName('title'))
-                .then(function(title) {
-                    title.getInnerHtml().then(function(
-                        titleText) {
-                        expect(titleText).to.be('OK');
-                        done();
-                    });
-                });
-        });
-        browser.close();
-
-    });
-
-    it('should return the title of the page "Alert", even with an alert',
-        function(done) {
-            browser.open("file://" + __dirname +
-                "/browser-tests/alert.html");
-            browser.do(function(driver) {
-                return driver.findElement(webdriver.By.tagName('title'))
-                    .then(function(title) {
-                        title.getInnerHtml().then(function(
-                            titleText) {
-                            expect(titleText).to.be('Alert');
-                            done();
-                        });
-                    });
-            });
-            browser.close();
-        });
-
-    it(
-        'should return the title of the page "Alert2", even with a delayed alert',
-        function(done) {
-            browser.open("file://" + __dirname +
-                "/browser-tests/alert2.html");
-            setTimeout(function() {
-                browser.do(function(driver) {
-                    return driver.findElement(webdriver.By.tagName(
-                        'title')).then(function(title) {
-                        title.getInnerHtml().then(function(
-                            titleText) {
-                            expect(titleText).to.be(
-                                'Alert2');
-                            done();
-                        });
-                    });
-                });
-                browser.close();
-            }, 2500);
-
-        });
-
-
-});
-
 describe("Getting data from network", function() {
     var server = require("./test_server/test_app.js");
     var browser = new Browser({
@@ -123,10 +58,9 @@ describe("Getting data from network", function() {
     it("should get the status code of a loadable page", function(done) {
         browser.on('har', function(har) {
             expect(har.log.entries[0].response.status).to.be(200);
-            done();
         });
         browser.open("http://localhost:3001/ok.html");
-        browser.close();
+        browser.close().then(done);
     });
 
     after(function() {
@@ -150,11 +84,11 @@ describe("Getting data from browser and network", function() {
         done) {
         browser.on('har', function(har) {
             expect(har.log.entries[0].response.status).to.be(200);
-            done();
         });
+
         browser.open("http://localhost:3001/ok.html");
         browser.do(function(d) {
-            return d.findElement(webdriver.By.tagName('title')).then(
+            return d.findElement(browser.webdriver.By.tagName('title')).then(
                 function(title) {
                     title.getInnerHtml().then(function(
                         titleText) {
@@ -162,10 +96,77 @@ describe("Getting data from browser and network", function() {
                     });
                 });
         });
-        browser.close();
+        browser.close().then(done);
     });
 
     after(function() {
         server.close();
     });
 });
+
+describe("Getting data from browser", function() {
+
+    it('should return the title of the page "OK"', function(done) {
+        var browser = new Browser();
+
+        browser.open("file://" + __dirname + "/browser-tests/ok.html");
+        browser.do(function(driver) {
+            return driver.findElement(webdriver.By.tagName('title'))
+                .then(function(title) {
+                    title.getInnerHtml().then(function(
+                        titleText) {
+                        expect(titleText).to.be('OK');
+                    });
+                });
+        });
+        browser.close().then(done);
+
+    });
+
+    it('should return the title of the page "Alert1", even with an alert',
+        function(done) {
+            var browser = new Browser();
+            browser.open("file://" + __dirname +
+                "/browser-tests/alert.html");
+            browser.on('alert', function(text) {
+                expect(text).to.be('test');
+            });
+            browser.do(function(driver) {
+                return driver.findElement(webdriver.By.tagName('title'))
+                    .then(function(title) {
+                        title.getInnerHtml().then(function(
+                            titleText) {
+                            expect(titleText).to.be('Alert');
+                        });
+                    });
+            });
+            browser.close().then(done);
+        });
+
+    it(
+        'should return the title of the page "Alert2", even with a delayed alert',
+        function(done) {
+            var browser = new Browser();
+            browser.open("file://" + __dirname +
+                "/browser-tests/alert2.html");
+            browser.on('alert', function(text) {
+                expect(text).to.be('test');
+                browser.close().then(done);
+            });
+            setTimeout(function() {
+                browser.do(function(driver) {
+                    return driver.findElement(webdriver.By.tagName(
+                        'title')).then(function(title) {
+                        title.getInnerHtml().then(function(
+                            titleText) {
+                            expect(titleText).to.be(
+                                'Alert2');
+                        });
+                    });
+                });
+            }, 3500);
+        });
+
+
+});
+
