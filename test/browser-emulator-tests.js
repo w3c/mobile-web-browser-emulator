@@ -37,8 +37,9 @@ describe("Getting data from network", function() {
     });
 
     it("should get the status code of a loadable page", function(done) {
-        browser.network.on('response', function(req, res) {
+        browser.network.on('response', function(req, res, bdone) {
             expect(res.statusCode).to.be(200);
+            res.on('end', function() { bdone();});
         });
         browser.open("http://localhost:3001/ok.html");
         browser.close().then(done);
@@ -63,17 +64,19 @@ describe("Getting data from browser and network", function() {
 
     it("should get the status code and title of a loadable page", function(
         done) {
-        browser.network.on('response', function(req, res) {
+        browser.network.on('response', function(req, res, bdone) {
             expect(res.statusCode).to.be(200);
+            res.on('end', function() { bdone();});
         });
 
         browser.open("http://localhost:3001/ok.html");
-        browser.do(function(d) {
+        browser.do(function(d, bdone) {
             return d.findElement(browser.webdriver.By.tagName('title')).then(
                 function(title) {
                     title.getInnerHtml().then(function(
                         titleText) {
                         expect(titleText).to.be('OK');
+                        bdone();
                     });
                 });
         });
@@ -91,12 +94,13 @@ describe("Getting data from browser", function() {
         var browser = new Browser();
 
         browser.open("file://" + __dirname + "/browser-tests/ok.html");
-        browser.do(function(driver) {
+        browser.do(function(driver, bdone) {
             return driver.findElement(webdriver.By.tagName('title'))
                 .then(function(title) {
                     title.getInnerHtml().then(function(
                         titleText) {
                         expect(titleText).to.be('OK');
+                        bdone();
                     });
                 });
         });
@@ -112,12 +116,13 @@ describe("Getting data from browser", function() {
             browser.on('alert', function(text) {
                 expect(text).to.be('test');
             });
-            browser.do(function(driver) {
+            browser.do(function(driver, bdone) {
                 return driver.findElement(webdriver.By.tagName('title'))
                     .then(function(title) {
                         title.getInnerHtml().then(function(
                             titleText) {
                             expect(titleText).to.be('Alert');
+                            bdone();
                         });
                     });
             });
@@ -135,13 +140,14 @@ describe("Getting data from browser", function() {
                 browser.close().then(done);
             });
             setTimeout(function() {
-                browser.do(function(driver) {
+                browser.do(function(driver, bdone) {
                     return driver.findElement(webdriver.By.tagName(
                         'title')).then(function(title) {
                         title.getInnerHtml().then(function(
                             titleText) {
                             expect(titleText).to.be(
                                 'Alert2');
+                            bdone();
                         });
                     });
                 });
