@@ -1,6 +1,6 @@
 {
     "name": "mobile-web-browser-emulator",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -10,14 +10,15 @@
         "url": "https://github.com/w3c/mobile-web-browser-emulator/issues"
     },
     "dependencies": {
-        "browsermob-proxy":"1.0.6",
+        "headless": "0.2.1",
+        "selenium-webdriver": "^2.46.1",
         "chromedriver": "^2.15",
+	"thin":"^0.3.1",
         "easyimage": "1.0.2",
         "headless": "0.2.1",
         "intl": "^0.1.4",
         "media-type": "0.1.0",
         "metaviewport-parser": "^0.0.1",
-        "selenium-webdriver": "^2.46.1",
         "node-uuid": "1.4.3",
         "rimraf": "^2.4.0"
     },
@@ -28,6 +29,6 @@
     },
     "scripts": {
        "start": "node app.js",
-       "test": "mocha --timeout 10000 --globals ErrorHandler"
+       "test": "mocha --timeout 20000 --globals ErrorHandler,domain"
     }
 }

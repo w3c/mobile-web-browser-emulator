@@ -12,7 +12,7 @@ describe("Starting and quiting browser", function() {
     it('should start and stop without error with correct proxy', function(
         done) {
         var browser = new Browser({
-            port: 8080,
+            proxyPort: 8000,
             trackNetwork: true
         });
         browser.on('error', function(msg) {
@@ -23,41 +23,23 @@ describe("Starting and quiting browser", function() {
         browser.close().then(done);
     });
 
-    it('should emit an error with incorrect proxy', function(done) {
-        var browser = new Browser({
-            browsermobProxy: {
-                port: 8081
-            },
-            trackNetwork: true
-        });
-        browser.on('error', function(err) {
-            expect(err.message).to.be(
-                'Failed gathering network traffic: Error: connect ECONNREFUSED'
-            );
-            done();
-        });
-        browser.open("file://" + __dirname + "/browser-tests/ok.html");
-        browser.close();
-    });
-
 });
 
 describe("Getting data from network", function() {
-    var server = require("./test_server/test_app.js");
-    var browser = new Browser({
-        browsermobProxy: {
-            port: 8080
-        },
-        trackNetwork: true
-    });
-
+    var server, browser;
     before(function() {
+        server = require("./test_server/test_app.js");
+        browser = new Browser({
+            proxyPort: 8081,
+            trackNetwork: true
+        });
         server.start(3001, '/../browser-tests');
     });
 
     it("should get the status code of a loadable page", function(done) {
-        browser.on('har', function(har) {
-            expect(har.log.entries[0].response.status).to.be(200);
+        browser.network.on('response', function(req, res, bdone) {
+            expect(res.statusCode).to.be(200);
+            res.on('end', function() { bdone();});
         });
         browser.open("http://localhost:3001/ok.html");
         browser.close().then(done);
@@ -69,30 +51,32 @@ describe("Getting data from network", function() {
 });
 
 describe("Getting data from browser and network", function() {
-    var server = require("./test_server/test_app.js");
-    var browser = new Browser({
-        browsermobProxy: {
-            port: 8080
-        },
-        trackNetwork: true
-    });
+    var server, browser;
+
     before(function() {
+        server = require("./test_server/test_app.js");
+        browser = new Browser({
+            proxyPort: 8082,
+            trackNetwork: true
+        });
         server.start(3001, '/../browser-tests');
     });
 
     it("should get the status code and title of a loadable page", function(
         done) {
-        browser.on('har', function(har) {
-            expect(har.log.entries[0].response.status).to.be(200);
+        browser.network.on('response', function(req, res, bdone) {
+            expect(res.statusCode).to.be(200);
+            res.on('end', function() { bdone();});
         });
 
         browser.open("http://localhost:3001/ok.html");
-        browser.do(function(d) {
+        browser.do(function(d, bdone) {
             return d.findElement(browser.webdriver.By.tagName('title')).then(
                 function(title) {
                     title.getInnerHtml().then(function(
                         titleText) {
                         expect(titleText).to.be('OK');
+                        bdone();
                     });
                 });
         });
@@ -110,12 +94,13 @@ describe("Getting data from browser", function() {
         var browser = new Browser();
 
         browser.open("file://" + __dirname + "/browser-tests/ok.html");
-        browser.do(function(driver) {
+        browser.do(function(driver, bdone) {
             return driver.findElement(webdriver.By.tagName('title'))
                 .then(function(title) {
                     title.getInnerHtml().then(function(
                         titleText) {
                         expect(titleText).to.be('OK');
+                        bdone();
                     });
                 });
         });
@@ -131,12 +116,13 @@ describe("Getting data from browser", function() {
             browser.on('alert', function(text) {
                 expect(text).to.be('test');
             });
-            browser.do(function(driver) {
+            browser.do(function(driver, bdone) {
                 return driver.findElement(webdriver.By.tagName('title'))
                     .then(function(title) {
                         title.getInnerHtml().then(function(
                             titleText) {
                             expect(titleText).to.be('Alert');
+                            bdone();
                         });
                     });
             });
@@ -154,13 +140,14 @@ describe("Getting data from browser", function() {
                 browser.close().then(done);
             });
             setTimeout(function() {
-                browser.do(function(driver) {
+                browser.do(function(driver, bdone) {
                     return driver.findElement(webdriver.By.tagName(
                         'title')).then(function(title) {
                         title.getInnerHtml().then(function(
                             titleText) {
                             expect(titleText).to.be(
                                 'Alert2');
+                            bdone();
                         });
                     });
                 });
