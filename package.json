@@ -29,6 +29,6 @@
     },
     "scripts": {
        "start": "node app.js",
-       "test": "mocha --timeout 10000 --globals ErrorHandler,domain"
+       "test": "mocha --timeout 20000 --globals ErrorHandler,domain"
     }
 }
