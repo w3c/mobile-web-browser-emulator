@@ -1,4 +1,6 @@
-language: node.js
+language: node_js
+node_js:
+  - "0.12"
 install:
  - npm install
  - ./.travis-setup.sh
