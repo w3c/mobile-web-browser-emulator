@@ -1,5 +1,6 @@
 {
     "name": "mobile-web-browser-emulator",
+    "description": "Emulation of a Chrome-based browser on a mobile device for Node.js",
     "version": "0.0.4",
     "license": "MIT",
     "repository": {
