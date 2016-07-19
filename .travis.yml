@@ -1,4 +1,5 @@
-sudo: false
+sudo: required
+dist: trusty
 language: node.js
 notifications:
   irc:
@@ -6,9 +7,9 @@ notifications:
       - "irc.w3.org#sysreq"
     skip_join: true
 install:
- - wget https://github.com/lightbody/browsermob-proxy/releases/download/browsermob-proxy-2.1.0-beta-3/browsermob-proxy-2.1.0-beta-3-bin.zip
- - unzip browsermob-proxy-2.1.0-beta-3-bin.zip
- - browsermob-proxy-2.1.0-beta-3/bin/browsermob-proxy &
+ - wget https://github.com/lightbody/browsermob-proxy/releases/download/browsermob-proxy-2.1.1/browsermob-proxy-2.1.1-bin.zip
+ - unzip browsermob-proxy-2.1.1-bin.zip
+ - browsermob-proxy-2.1.1/bin/browsermob-proxy &
  - npm install
  - ./.travis-setup.sh
 script:
