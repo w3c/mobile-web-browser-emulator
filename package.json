@@ -1,7 +1,7 @@
 {
     "name": "mobile-web-browser-emulator",
     "description": "Emulation of a Chrome-based browser on a mobile device for Node.js",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -11,24 +11,24 @@
         "url": "https://github.com/w3c/mobile-web-browser-emulator/issues"
     },
     "dependencies": {
-        "browsermob-proxy":"1.0.6",
-        "chromedriver": "^2.15",
-        "easyimage": "1.0.2",
-        "headless": "0.2.1",
-        "intl": "^0.1.4",
-        "media-type": "0.1.0",
-        "metaviewport-parser": "^0.0.1",
-        "selenium-webdriver": "^2.46.1",
-        "node-uuid": "1.4.3",
-        "rimraf": "^2.4.0"
+        "browsermob-proxy": "1.0.9",
+        "chromedriver": "2.21.2",
+        "easyimage": "2.1.0",
+        "headless": "1.0.0",
+        "intl": "1.2.4",
+        "media-type": "0.3.0",
+        "metaviewport-parser": "0.0.1",
+        "node-uuid": "1.4.7",
+        "rimraf": "2.5.3",
+        "selenium-webdriver": "2.53.3"
     },
     "devDependencies": {
-        "expect.js": "^0.3.1",
-        "express": "4.4.1",
-        "mocha": "^2.2.5"
+        "expect.js": "0.3.1",
+        "express": "4.14.0",
+        "mocha": "2.5.3"
     },
     "scripts": {
-       "start": "node app.js",
-       "test": "mocha --timeout 10000 --globals ErrorHandler"
+        "start": "node app.js",
+        "test": "mocha --timeout 10000 --globals ErrorHandler"
     }
 }
