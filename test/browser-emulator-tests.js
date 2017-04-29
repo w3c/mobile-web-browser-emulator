@@ -20,7 +20,7 @@ describe("Starting and quiting browser", function() {
             done();
         });
         browser.open("file://" + __dirname + "/browser-tests/ok.html");
-        browser.close().then(done);
+        browser.close().then(done());
     });
 
     it('should emit an error with incorrect proxy', function(done) {
