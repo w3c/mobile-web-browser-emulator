@@ -18,7 +18,7 @@
         "intl": "^0.1.4",
         "media-type": "0.1.0",
         "metaviewport-parser": "^0.0.1",
-        "selenium-webdriver": "^2.53.1",
+        "selenium-webdriver": "^3.4.0",
         "uuid": "3.0.1",
         "rimraf": "^2.4.0"
     },
