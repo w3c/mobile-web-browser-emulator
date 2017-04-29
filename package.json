@@ -11,20 +11,20 @@
         "url": "https://github.com/w3c/mobile-web-browser-emulator/issues"
     },
     "dependencies": {
-        "browsermob-proxy":"1.0.9",
+        "browsermob-proxy":"^1.0.9",
         "chromedriver": "^2.29.0",
-        "easyimage": "1.0.2",
-        "headless": "0.2.1",
-        "intl": "^0.1.4",
-        "media-type": "0.3.1",
+        "easyimage": "^2.1.0",
+        "headless": "^1.2.0",
+        "intl": "^1.2.5",
+        "media-type": "^0.3.1",
         "metaviewport-parser": "^0.0.1",
-        "selenium-webdriver": "^2.53.1",
-        "uuid": "3.0.1",
         "rimraf": "^2.6.1"
+        "selenium-webdriver": "^2.53.1",
+        "uuid": "^3.0.1",
     },
     "devDependencies": {
         "expect.js": "^0.3.1",
-        "express": "4.15.2",
+        "express": "^4.15.2",
         "mocha": "^3.3.0"
     },
     "scripts": {
