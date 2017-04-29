@@ -18,9 +18,9 @@
         "intl": "^1.2.5",
         "media-type": "^0.3.1",
         "metaviewport-parser": "^0.0.1",
-        "rimraf": "^2.6.1"
+        "rimraf": "^2.6.1",
         "selenium-webdriver": "^2.53.1",
-        "uuid": "^3.0.1",
+        "uuid": "^3.0.1"
     },
     "devDependencies": {
         "expect.js": "^0.3.1",
