@@ -12,7 +12,7 @@ describe("Starting and quiting browser", function() {
     it('should start and stop without error with correct proxy', function(
         done) {
         var browser = new Browser({
-            port: 8081,
+            port: 8080,
             trackNetwork: true
         });
         browser.on('error', function(msg) {
@@ -46,7 +46,7 @@ describe("Getting data from network", function() {
     var server = require("./test_server/test_app.js");
     var browser = new Browser({
         browsermobProxy: {
-            port: 8082
+            port: 8080
         },
         trackNetwork: true
     });
@@ -72,7 +72,7 @@ describe("Getting data from browser and network", function() {
     var server = require("./test_server/test_app.js");
     var browser = new Browser({
         browsermobProxy: {
-            port: 8083
+            port: 8080
         },
         trackNetwork: true
     });
