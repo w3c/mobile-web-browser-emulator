@@ -143,15 +143,13 @@ describe("Getting data from browser", function() {
             browser.close().then(done());
         });
 
-    it(
-        'should return the title of the page "Alert2", even with a delayed alert',
+    it('should return the title of the page "Alert2", even with a delayed alert',
         function(done) {
             var browser = new Browser();
             browser.open("file://" + __dirname +
                 "/browser-tests/alert2.html");
             browser.on('alert', function(text) {
                 expect(text).to.be('test');
-                browser.close().then(done());
             });
             setTimeout(function() {
                 browser.do(function(driver) {
@@ -159,12 +157,12 @@ describe("Getting data from browser", function() {
                         'title')).then(function(title) {
                         title.getInnerHtml().then(function(
                             titleText) {
-                            expect(titleText).to.be(
-                                'Alert2');
+                            expect(titleText).to.be('Alert2');
                         });
                     });
                 });
             }, 3500);
+            browser.close().then(done());
         });
 
 
