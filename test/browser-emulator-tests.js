@@ -60,7 +60,7 @@ describe("Getting data from network", function() {
             expect(har.log.entries[0].response.status).to.be(200);
         });
         browser.open("http://localhost:3001/ok.html");
-        browser.close().then(done);
+        browser.close().then(done());
     });
 
     after(function() {
@@ -96,7 +96,7 @@ describe("Getting data from browser and network", function() {
                     });
                 });
         });
-        browser.close().then(done);
+        browser.close().then(done());
     });
 
     after(function() {
@@ -119,7 +119,7 @@ describe("Getting data from browser", function() {
                     });
                 });
         });
-        browser.close().then(done);
+        browser.close().then(done());
 
     });
 
@@ -140,7 +140,7 @@ describe("Getting data from browser", function() {
                         });
                     });
             });
-            browser.close().then(done);
+            browser.close().then(done());
         });
 
     it(
@@ -151,7 +151,7 @@ describe("Getting data from browser", function() {
                 "/browser-tests/alert2.html");
             browser.on('alert', function(text) {
                 expect(text).to.be('test');
-                browser.close().then(done);
+                browser.close().then(done());
             });
             setTimeout(function() {
                 browser.do(function(driver) {
