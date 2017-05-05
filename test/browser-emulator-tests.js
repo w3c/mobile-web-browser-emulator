@@ -32,8 +32,8 @@ describe("Starting and quiting browser", function() {
             trackNetwork: true
         });
         browser.on('error', function(err) {
-            expect(err.message).to.be(
-                'Failed gathering network traffic: Error: connect ECONNREFUSED 127.0.0.1:9999'
+            expect(err.message).to.contain(
+                'Failed gathering network traffic: Error: connect ECONNREFUSED'
             );
             done();
         });
