@@ -20,7 +20,7 @@ describe("Starting and quiting browser", function() {
             done();
         });
         browser.open("file://" + __dirname + "/browser-tests/ok.html");
-        browser.close();
+        browser.close().then(done);
         done();
     });
 
@@ -38,7 +38,7 @@ describe("Starting and quiting browser", function() {
             done();
         });
         browser.open("file://" + __dirname + "/browser-tests/ok.html");
-        browser.close();
+        browser.close().then(done);
     });
 
 });
@@ -61,7 +61,7 @@ describe("Getting data from network", function() {
             expect(har.log.entries[0].response.status).to.be(200);
         });
         browser.open("http://localhost:3001/ok.html");
-        browser.close();
+        browser.close().then(done);
         server.close();
         done();
     });
@@ -94,7 +94,7 @@ describe("Getting data from browser and network", function() {
                 }
             );
         });
-        browser.close();
+        browser.close().then(done);
         server.close();
         done();
     });
@@ -115,7 +115,7 @@ describe("Getting data from browser", function() {
                     });
                 });
         });
-        browser.close();
+        browser.close().then(done);
         done();
     });
 
@@ -136,7 +136,7 @@ describe("Getting data from browser", function() {
                     });
                 });
         });
-        browser.close();
+        browser.close().then(done);
         done();
     });
     
@@ -159,7 +159,7 @@ describe("Getting data from browser", function() {
                 });
             });
         }, 3500);
-        browser.close();
+        browser.close().then(done);
         done();
     });
 });
