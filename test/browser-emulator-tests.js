@@ -21,7 +21,6 @@ describe("Starting and quiting browser", function() {
         });
         browser.open("file://" + __dirname + "/browser-tests/ok.html");
         browser.close().then(done);
-        done();
     });
 
     it('should emit an error with incorrect proxy', function(done) {
@@ -62,8 +61,10 @@ describe("Getting data from network", function() {
         });
         browser.open("http://localhost:3001/ok.html");
         browser.close().then(done);
+    });
+    
+    after(function() {
         server.close();
-        done();
     });
 });
 
@@ -95,8 +96,10 @@ describe("Getting data from browser and network", function() {
             );
         });
         browser.close().then(done);
+    });
+    
+    after(function() {
         server.close();
-        done();
     });
 });
 
@@ -116,7 +119,6 @@ describe("Getting data from browser", function() {
                 });
         });
         browser.close().then(done);
-        done();
     });
 
     it('should return the title of the page "Alert1", even with an alert',
@@ -137,7 +139,6 @@ describe("Getting data from browser", function() {
                 });
         });
         browser.close().then(done);
-        done();
     });
     
     it('should return the title of the page "Alert2", even with a delayed alert',
@@ -160,6 +161,5 @@ describe("Getting data from browser", function() {
             });
         }, 3500);
         browser.close().then(done);
-        done();
     });
 });
