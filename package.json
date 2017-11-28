@@ -11,7 +11,7 @@
         "url": "https://github.com/w3c/mobile-web-browser-emulator/issues"
     },
     "dependencies": {
-        "browsermob-proxy":"^1.0.9",
+        "browsermob-proxy": "^1.0.9",
         "chromedriver": "^2.29.0",
         "easyimage": "^2.1.0",
         "headless": "^1.2.0",
@@ -28,7 +28,7 @@
         "mocha": "^3.3.0"
     },
     "scripts": {
-       "start": "node app.js",
-       "test": "mocha --timeout 10000 --globals ErrorHandler"
+        "start": "node app.js",
+        "test": "mocha --timeout 10000 --globals ErrorHandler"
     }
 }
