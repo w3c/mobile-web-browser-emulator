@@ -1,5 +1,5 @@
 [![Dependency Status](https://david-dm.org/w3c/mobile-web-browser-emulator.svg)](https://david-dm.org/w3c/mobile-web-browser-emulator)
-[![devDependency Status](https://david-dm.org/w3c/mobile-web-browser-emulator/dev-status.svg)](https://david-dm.org/w3c/mobile-web-browser-emulator#info=devDependencies)
+[![devDependency Status](https://david-dm.org/w3c/mobile-web-browser-emulator/dev-status.svg)](https://david-dm.org/w3c/mobile-web-browser-emulator?type=dev)
 
 # Mobile Web Browser Emulator
 
@@ -9,12 +9,12 @@ This module is used by the new version of the [Mobile Checker by W3C](https://va
 
 This application works in [headless](https://github.com/kesla/node-headless) mode (powered via XVFB). Using it on the server side is easy.
 
-![alt google screenshot](https://github.com/guibbs/mobile-web-browser-emulator/blob/master/examples/screenshots/google.png)
-![alt w3c screenshot](https://github.com/guibbs/mobile-web-browser-emulator/blob/master/examples/screenshots/w3.png)
+![Google screenshot](https://github.com/w3c/mobile-web-browser-emulator/raw/master/examples/screenshots/google.png)
+![W3C screenshot](https://github.com/w3c/mobile-web-browser-emulator/raw/master/examples/screenshots/w3.png)
 
 ## Install
 
-Start by having [BrowserMob Proxy](http://bmp.lightbody.net/) set up and running. Then run the following command
+Start by having [BrowserMob Proxy](https://bmp.lightbody.net/) set up and running. Then run the following command:
 
 ```
 npm install mobile-web-browser-emulator
@@ -22,7 +22,7 @@ npm install mobile-web-browser-emulator
 
 ## API
 
-With Mobile Web Browser Emulator, it is easy test mobile web applications [using the Selenium WebDriver API](http://selenium.googlecode.com/git/docs/api/javascript/index.html).
+With Mobile Web Browser Emulator, it is easy test mobile web applications [using the Selenium WebDriver API](https://seleniumhq.github.io/selenium/docs/api/javascript/).
 
 Emulation example:
 
